@@ -1,0 +1,160 @@
+<script src="${rc.contextPath}/js/datepicker/WdatePicker.js"></script>
+<div style="text-align:center"><h3>合同录入</h3></div>
+<form class="form-horizontal" role="form" action="${rc.contextPath}/period/save" method="post">
+  <div class="control-group">
+    <label class="col-sm-2 control-label">合同编号</label>
+    <div class="controls">
+      <input type="text" name="pact" value="$!{pact}" class="input-xlarge" placeholder="合同编号"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">学员编号</label>
+    <div class="controls">
+      <input type="text" name="id" value="$!{id}" class="input-xlarge" placeholder="学员编号"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">学员姓名</label>
+    <div class="controls">
+      <input type="text" name="name" value="$!{name}" class="input-xlarge" placeholder="学员姓名"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">年级</label>
+    <div class="controls">
+      <input type="text" name="grade" value="$!{grade}" class="input-xlarge" placeholder="年级"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">学校班级</label>
+    <div class="controls">
+      <input type="text" name="banji" value="$!{banji}" class="input-xlarge" placeholder="学校班级"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">家庭地址</label>
+    <div class="controls">
+      <input type="text" name="address" value="$!{address}" class="input-xlarge" placeholder="家庭地址"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">联系方式一</label>
+    <div class="controls">
+      <input type="text" name="tel" value="$!{tel}" class="input-xlarge" placeholder="联系方式一"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">联系方式二</label>
+    <div class="controls">
+      <input type="text" name="phone" value="$!{phone}" class="input-xlarge" placeholder="联系方式二"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">所报科目</label>
+    <div class="controls">
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="语文">语文</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="数学">数学</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="英语">英语</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="科学">科学</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="物理">物理</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="化学">化学</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="生物">生物</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="政治">政治</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="历史">历史</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="地理">地理</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="奥数">奥数</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="新概念英语">新概念英语</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="剑桥英语">剑桥英语</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="小升初面试课程">小升初面试课程</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="其他">其他</input>
+        </label>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">辅导模式</label>
+    <div class="controls">
+      <select name="model">
+        <option>1对1</option>
+        <option>1对2</option>
+        <option>其他</option>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">所报课时（小时）</label>
+    <div class="controls">
+      <input type="text" name="period" value="$!{period}" class="input-xlarge" placeholder="所报课时（小时）"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">课时单价（元/小时）</label>
+    <div class="controls">
+      <input type="text" name="price" value="$!{price}" class="input-xlarge" placeholder="课时单价（元/小时）"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">赠送课时（不能为空，默认0）</label>
+    <div class="controls">
+      <input type="text" name="gift" value="0" class="input-xlarge" placeholder="赠送课时"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">优惠条件</label>
+    <div class="controls">
+      <input type="text" name="tiaojian" value="$!{tiaojian}" class="input-xlarge" placeholder="优惠条件"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">总金额</label>
+    <div class="controls">
+      <input type="text" name="amount" value="$!{amount}" class="input-xlarge" placeholder="总金额"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">学员情况</label>
+    <div class="controls">
+      <textarea class="input-xlarge" name="description" rows="5"></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">签约日期</label>
+    <div class="controls">
+      <input id="date" name="date" value="$!{date}" type="text" class="span3" placeholder="签约日期" onfocus="WdatePicker()">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="col-sm-offset-2 controls">
+      <button type="submit" class="btn btn-danger">财务确认</button>
+      <button type="submit" class="btn btn-default">提交申请</button>
+    </div>
+  </div>
+</form>

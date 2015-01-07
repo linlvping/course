@@ -1,0 +1,48 @@
+<script src="${rc.contextPath}/js/datepicker/WdatePicker.js"></script>
+<div style="text-align:center"><h3>课表显示</h3></div>
+<form class="well form-search" action="${rc.contextPath}/schedule/show" method="post">
+	<input name="beginDate" value="$!{beginDate}" type="text" class="span3" placeholder="选择日期" onfocus="WdatePicker()">
+	<input name="endDate" value="$!{endDate}" type="text" class="span3" placeholder="选择日期" onfocus="WdatePicker()">
+	<button type="submit" class="btn">查询</button>
+</form>
+<table class="table table-striped table-bordered table-hover">
+    	<thead>
+    		<tr>
+        		<th></th>
+			<th></th>
+			#foreach($!{date} in $!{dateArray})
+				<th>$!{date.display}</th>
+			#end
+    		</tr>
+        </thead>
+    	<tbody>
+		#foreach($!{entry} in $!{map.entrySet()})
+    		<tr>
+			#foreach($!{lmap} in $!{entry.value.entrySet()})
+				#if($!{lmap.key} == 1) 
+					<td rowspan="5" style="vertical-align:middle;width:100px;">$!{entry.key}</td>
+					<td>08:00-10:00</td> 
+				#end
+				#if($!{lmap.key} == 2) <tr><td>10:00-12:00</td> #end
+				#if($!{lmap.key} == 3) <tr><td>13:00-15:00</td> #end
+				#if($!{lmap.key} == 4) <tr><td>15:00-17:00</td> #end
+				#if($!{lmap.key} == 5) <tr><td>18:00-20:00</td> #end
+				#if($!{lmap.key} == 6) <tr><td>20:00-22:00</td> #end
+				
+				#foreach($!{date} in $!{dateArray})
+					<td style="width:80px;">
+						#foreach($!{schedule} in $!{lmap.value.get("$!{date.date}")})
+							#if($!{schedule.status} == 0) <span title="未确认">$!{schedule.student}</span> #end
+							#if($!{schedule.status} == 1) <span style="color:#008B00;" title="已正常上课">$!{schedule.student}</span> #end
+							#if($!{schedule.status} == 2) <span style="color:#EEC900;" title="已上课，实际课时$!{schedule.fact}分钟">$!{schedule.student}</span> #end
+							#if($!{schedule.status} == 3) <span style="color:#FF4500;" title="请假">$!{schedule.student}</span> #end
+						#end
+					</td>
+				#end
+				#if($!{lmap.key} > 1) </tr> #end
+			#end
+		</tr>
+		#end
+    </tbody>
+</table>
+

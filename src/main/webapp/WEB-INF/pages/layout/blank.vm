@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>图灵管理平台</title>
+<!-- 最新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="${rc.contextPath}/css/bootstrap.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="${rc.contextPath}/js/jquery-1.8.2.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="${rc.contextPath}/js/bootstrap.min.js"></script>
+</head>
+<body>
+	$screen_content
+</body>
+</html>
