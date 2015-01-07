@@ -1,5 +1,7 @@
 package com.lvping.lin.course.model.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class UserService {
         int current = CommonUtils.getCurrentTime();
         user.setCreated(current);
         user.setUpdated(current);
+        user.setPriority(0);
         userDao.save(user);
     }
     
@@ -43,6 +46,9 @@ public class UserService {
     public User getByName(String name) {
        return userDao.getByName(name);
     }
-
+    
+    public List<User> getAllUsers() {
+        return userDao.getAll();
+    }
 
 }

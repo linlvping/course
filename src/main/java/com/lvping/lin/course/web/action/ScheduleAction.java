@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lvping.lin.course.common.CommonUtils;
+import com.lvping.lin.course.common.Constants;
 import com.lvping.lin.course.common.DateUtils;
 import com.lvping.lin.course.common.TableDataUtils;
 import com.lvping.lin.course.model.entity.Schedule;
@@ -44,6 +45,7 @@ public class ScheduleAction {
     
     @RequestMapping("/show")
     public String show(Model model, HttpServletRequest request) throws ParseException {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "schedule_show");
         String beginDate = request.getParameter("beginDate");
         String endDate = request.getParameter("endDate");
         if (CommonUtils.isEmpty(beginDate)) {
@@ -62,7 +64,8 @@ public class ScheduleAction {
     }
 
     @RequestMapping("/add")
-    public String add(Model model) {
+    public String add(Model model, HttpServletRequest request) {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "schedule_add");
         List<Teacher> teacher = teacherService.getValidTeacher();
         List<Student> student = periodService.getValidStudent();
         model.addAttribute("teacher", teacher);
@@ -77,7 +80,8 @@ public class ScheduleAction {
     }
     
     @RequestMapping("/list")
-    public String list() {
+    public String list(HttpServletRequest request) {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "schedule_list");
         return "schedule/list";
     }
 

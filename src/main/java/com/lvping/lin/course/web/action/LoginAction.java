@@ -39,7 +39,7 @@ public class LoginAction {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			User user = userService.getByName(name);
-			if (user == null) {
+			if (user == null || user.getStatus() != 0) {
 			    model.addAttribute("errorMessage", "用户名不存在！");
 			    return "login";
 			}
@@ -55,5 +55,11 @@ public class LoginAction {
 			return "login";
 		}
 	}
+	
+	@RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
+	    request.getSession().removeAttribute(Constants.SEESION_USER);
+        return "login";
+    }
 	
 }

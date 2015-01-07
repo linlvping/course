@@ -13,5 +13,6 @@ public class Constants {
     //
     ////////////////////////////////////////////////////////
     public static final String SEESION_USER = "sessionUser";
+    public static final String SEESION_LINK = "sessionLink";
 
 }

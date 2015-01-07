@@ -1,5 +1,7 @@
 package com.lvping.lin.course.model.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -14,8 +16,8 @@ import com.lvping.lin.course.model.entity.User;
  */
 public interface UserDao {
     
-    @Insert("insert into User(name,password,priority,created,update) " +
-    		"values(#{name},#{password},#{priority},#{created},#{update})")
+    @Insert("insert into User(name,password,priority,created,updated) " +
+    		"values(#{name},#{password},#{priority},#{created},#{updated})")
     public void save(User user);
     
     @Update("update User set password=#{password} where id=#{id}")
@@ -26,5 +28,8 @@ public interface UserDao {
     
     @Select("select * from User where name=#{name}")
     public User getByName(String name);
+    
+    @Select("select * from User order by status asc, id desc")
+    public List<User> getAll();
 
 }

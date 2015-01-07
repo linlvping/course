@@ -37,7 +37,8 @@ public class CallBackAction {
     private CallbackService callbackService;
     
     @RequestMapping("/index") 
-    public String index() {
+    public String index(HttpServletRequest request) {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "callback_index");
         return "callback/list";
     }
     

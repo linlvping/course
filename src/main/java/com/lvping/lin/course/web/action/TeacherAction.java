@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lvping.lin.course.common.Constants;
 import com.lvping.lin.course.common.TableDataUtils;
 import com.lvping.lin.course.model.entity.Teacher;
 import com.lvping.lin.course.model.service.TeacherService;
@@ -29,12 +31,14 @@ public class TeacherAction {
     private TeacherService teacherService;
     
     @RequestMapping("/add")
-    public String add() {
+    public String add(HttpServletRequest request) {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "teacher_add");
         return "teacher/add";
     }
     
     @RequestMapping("/list")
-    public String list() {
+    public String list(HttpServletRequest request) {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "teacher_list");
         return "teacher/list";
     }
     

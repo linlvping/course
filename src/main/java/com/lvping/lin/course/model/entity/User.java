@@ -71,5 +71,13 @@ public class User {
     public void setUpdated(int updated) {
         this.updated = updated;
     }
+    
+    public String getStatusDisplay() {
+        return this.status == 0 ? "正常" : "已失效";
+    }
+    
+    public String getAction() {
+        return this.status == 0 ? "<a href='invalid/"+this.id+"'>弃用该用户</a>" : "<a href='valid/"+this.id+"'>重新启用</a>";
+    }
 
 }

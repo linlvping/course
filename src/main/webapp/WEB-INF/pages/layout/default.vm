@@ -23,7 +23,8 @@
           </a>
           <div class="nav-collapse">
             <p class="navbar-text pull-left">都逸私塾教学管理系统</p>
-            <p class="navbar-text pull-right">欢迎登陆， <a href="#">$!{sessionUser.name}</a></p>
+            <p class="navbar-text pull-right">欢迎登陆， <a href="#">$!{sessionUser.name}</a>
+				<a style="margin-left:20px;" href="${rc.contextPath}/logout">退出</a></p>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -33,18 +34,28 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
+			  #if($!{sessionUser.priority} == 100)
               <li class="nav-header">学员管理</li>
-              <li class="active"><a href="${rc.contextPath}/period/add">合同录入</a></li>
-              <li><a href="${rc.contextPath}/period/list">课时查看</a></li>
+              <li #if($!{sessionLink} == 'period_add')class="active" #end><a href="${rc.contextPath}/period/add">合同录入</a></li>
+              <li #if($!{sessionLink} == 'period_list')class="active" #end><a href="${rc.contextPath}/period/list">课时查看</a></li>
               <li class="nav-header">课表</li>
-              <li><a href="${rc.contextPath}/schedule/show">课表显示</a></li>
-              <li><a href="${rc.contextPath}/schedule/add">添加课表</a></li>
-              <li><a href="${rc.contextPath}/schedule/list">课时确认</a></li>
+              <li #if($!{sessionLink} == 'schedule_show')class="active" #end><a href="${rc.contextPath}/schedule/show">课表显示</a></li>
+              <li #if($!{sessionLink} == 'schedule_add')class="active" #end><a href="${rc.contextPath}/schedule/add">添加课表</a></li>
+              <li #if($!{sessionLink} == 'schedule_list')class="active" #end><a href="${rc.contextPath}/schedule/list">课时确认</a></li>
+			  #end
 			  <li class="nav-header">学员回访</li>
-              <li><a href="${rc.contextPath}/callback/index">学员列表</a></li>
+              <li #if($!{sessionLink} == 'callback_index')class="active" #end><a href="${rc.contextPath}/callback/index">学员列表</a></li>
+			  #if($!{sessionUser.priority} == 100)
 			  <li class="nav-header">老师管理</li>
-              <li><a href="${rc.contextPath}/teacher/add">添加老师</a></li>
-              <li><a href="${rc.contextPath}/teacher/list">老师列表</a></li>
+              <li #if($!{sessionLink} == 'teacher_add')class="active" #end><a href="${rc.contextPath}/teacher/add">添加老师</a></li>
+              <li #if($!{sessionLink} == 'teacher_list')class="active" #end><a href="${rc.contextPath}/teacher/list">老师列表</a></li>
+			  #end
+			  <li class="nav-header">用户管理</li>
+              #if($!{sessionUser.priority} == 100)
+			  <li #if($!{sessionLink} == 'user_add')class="active" #end><a href="${rc.contextPath}/user/add">添加用户</a></li>
+              <li #if($!{sessionLink} == 'user_list')class="active" #end><a href="${rc.contextPath}/user/list">用户列表</a></li>
+              #end
+			  <li #if($!{sessionLink} == 'user_password')class="active" #end><a href="${rc.contextPath}/user/password">修改密码</a></li>
            </ul>
           </div><!--/.well -->
         </div><!--/span-->
