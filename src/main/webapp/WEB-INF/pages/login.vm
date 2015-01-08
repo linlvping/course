@@ -1,15 +1,22 @@
 <link rel="stylesheet" href="${rc.contextPath}/css/page/login.css">
 #set($layout = 'layout/blank.vm')
 <div class="container">
-	#if($errorMessage)
+	<section class="container">
+    <div class="login">
+      <h1>都逸私塾</h1>
+	  #if($errorMessage)
     <div class="alert alert-danger alert-dismissable">
         	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         	$!{errorMessage}
     </div>
-    #end
-	<form class="form-signin" role="form" action="${rc.contextPath}/logon" method="post">
-        <input type="text" name="name" class="form-control" placeholder="用户名" required autofocus>
-        <input type="password" name="password" class="form-control" placeholder="密码" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+	#end
+      <form action="${rc.contextPath}/logon" method="post">
+        <p><input type="text" name="name" value="" placeholder="账号"></p>
+        <p><input type="password" name="password" value="" placeholder="密码"></p>
+        <p class="submit"><input type="submit" name="commit" value="登陆"></p>
       </form>
+    </div>
+
+    </div>
+  </section>
 </div>
