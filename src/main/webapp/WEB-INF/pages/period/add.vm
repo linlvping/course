@@ -22,7 +22,21 @@
   <div class="control-group">
     <label class="col-sm-2 control-label">年级</label>
     <div class="controls">
-      <input type="text" name="grade" value="$!{grade}" class="input-xlarge" placeholder="年级"/>
+	  <select name="grade">
+		<option value="1000">--请选择年级--</option>
+        <option value="1">小学一年级</option>
+        <option value="2">小学二年级</option>
+        <option value="3">小学三年级</option>
+        <option value="4">小学四年级</option>
+        <option value="5">小学五年级</option>
+        <option value="6">小学六年级</option>
+        <option value="7">初一</option>
+        <option value="8">初二</option>
+        <option value="9">初三</option>
+        <option value="10">高一</option>
+        <option value="11">高二</option>
+        <option value="12">高三</option>
+      </select>
     </div>
   </div>
   <div class="control-group">

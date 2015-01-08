@@ -39,7 +39,7 @@ public class PriorityInterceptor implements HandlerInterceptor {
             return false;
         } 
         if (user.getPriority() < 100) {
-            response.sendRedirect(request.getContextPath()+"/index");
+            response.sendRedirect(request.getContextPath()+"/");
             return false; 
         }
         return true;

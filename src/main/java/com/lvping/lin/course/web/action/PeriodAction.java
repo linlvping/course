@@ -41,6 +41,12 @@ public class PeriodAction {
         return "redirect:list";
     }
     
+    @RequestMapping("/update")
+    public String update(Student student) {
+        periodService.updateStudent(student);
+        return "redirect:../callback/index";
+    }
+    
     @RequestMapping("/list")
     public String list(HttpServletRequest request) {
         request.getSession().setAttribute(Constants.SEESION_LINK, "period_list");

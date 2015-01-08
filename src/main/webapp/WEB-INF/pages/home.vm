@@ -1,3 +1,37 @@
+<link rel="stylesheet" href="${rc.contextPath}/css/page/style.css">
+<script src="${rc.contextPath}/js/scroll.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.list_lh li:even').addClass('lieven');
+})
+$(function(){
+	$("div .list_lh").myScroll({
+		speed:30, //数值越大，速度越慢
+		rowHeight:20 //li的高度
+	});
+});
+</script>
 <div class="jumbotron">
   <h1>Welcome!</h1>
 </div>
+#if($!{sessionUser.priority} == 100)
+	#if($message)<div class="alert alert-success">$!{message}</div>#end
+	<a href="${rc.contextPath}/upgrade">升级年级</a>
+	<div class="box">
+        	<div class="bcon">
+        		<h1><b>学员课时消耗情况</b></h1>
+        		<div class="list_lh">
+        			<ul>
+					#foreach($!{student} in $!{list})
+						<li>
+							<a style="width:150px;" href="${rc.contextPath}/callback/paike?name=$!{student.name}"><span style="width:150px;">学员：$!{student.name}</span></a>
+							<span style="width:150px;">年级：$!{student.gradeDisplay}</span>
+							<span style="width:250px">所报课程：$!{student.course}</span>
+							<span style="width:150px;">剩余课时：$!{student.remainDisplay}</span>
+						</li>
+					#end
+        			</ul>
+        		</div>
+        	</div>
+	</div>
+#end

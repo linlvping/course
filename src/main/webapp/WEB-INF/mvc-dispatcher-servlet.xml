@@ -61,7 +61,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**/**" />
 			<mvc:exclude-mapping path="/login" />
-			<mvc:exclude-mapping path="/index" />
+			<mvc:exclude-mapping path="/" />
 			<mvc:exclude-mapping path="/logon" />
 			<mvc:exclude-mapping path="/logout" />
 			<mvc:exclude-mapping path="/js/**" />

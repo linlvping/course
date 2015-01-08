@@ -1,110 +1,191 @@
 <script src="${rc.contextPath}/js/datepicker/WdatePicker.js"></script>
+<script type="text/javascript"> 
+function check() {
+	return confirm('确认修改吗？');
+}
+$(document).ready(function(){
+	var course = "$!{student.course}";
+	var courseArray = new Array();
+	courseArray = course.split(',');
+	$("input:checkbox").each(function(){  
+       var value = $(this).val();
+	   if (courseArray.indexOf(value) >=0 ) {
+	   	   $(this).attr('checked','checked');
+	   }
+    });  
+	$('#model').val("$!{student.model}");
+	$('#grade').val("$!{student.grade}");
+});
+</script>
 <div style="text-align:center"><h3>学员具体信息——$!{student.name}</h3></div>
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" action="${rc.contextPath}/period/update" method="post" onsubmit="return check();">
   <div class="control-group">
     <label class="col-sm-2 control-label">合同编号</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="pact" value="$!{student.pact}" class="input-xlarge"/>
+      <input type="text" name="pact" value="$!{student.pact}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">学员编号</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="id" value="$!{student.id}" class="input-xlarge"/>
+      <input type="text" name="id" value="$!{student.id}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">学员姓名</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="name" value="$!{student.name}" class="input-xlarge"/>
+      <input readonly="readonly" type="text" name="name" value="$!{student.name}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">年级</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="grade" value="$!{student.grade}" class="input-xlarge"/>
+      <select id="grade" name="grade">
+        <option value="1000">--请选择年级--</option>
+        <option value="1">小学一年级</option>
+        <option value="2">小学二年级</option>
+        <option value="3">小学三年级</option>
+        <option value="4">小学四年级</option>
+        <option value="5">小学五年级</option>
+        <option value="6">小学六年级</option>
+        <option value="7">初一</option>
+        <option value="8">初二</option>
+        <option value="9">初三</option>
+        <option value="10">高一</option>
+        <option value="11">高二</option>
+        <option value="12">高三</option>
+      </select>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">学校班级</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="banji" value="$!{student.banji}" class="input-xlarge"/>
+      <input type="text" name="banji" value="$!{student.banji}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">家庭地址</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="address" value="$!{student.address}" class="input-xlarge"/>
+      <input type="text" name="address" value="$!{student.address}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">联系方式一</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="tel" value="$!{student.tel}" class="input-xlarge"/>
+      <input type="text" name="tel" value="$!{student.tel}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">联系方式二</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="phone" value="$!{student.phone}" class="input-xlarge"/>
+      <input type="text" name="phone" value="$!{student.phone}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">所报科目</label>
     <div class="controls">
-		#foreach($!{course} in $!{student.courseList})
 		<label class="checkbox inline">
-			<input disabled="disabled" checked="checked" type="checkbox" name="course">$!{course}</input>
+			<input type="checkbox" name="course" value="语文">语文</input>
         </label>
-		#end
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="数学">数学</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="英语">英语</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="科学">科学</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="物理">物理</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="化学">化学</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="生物">生物</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="政治">政治</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="历史">历史</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="地理">地理</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="奥数">奥数</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="新概念英语">新概念英语</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="剑桥英语">剑桥英语</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="小升初面试课程">小升初面试课程</input>
+        </label>
+		<label class="checkbox inline">
+			<input type="checkbox" name="course" value="其他">其他</input>
+        </label>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">辅导模式</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="phone" value="$!{student.model}" class="input-xlarge"/>
+		<select id="model" name="model">
+            <option>1对1</option>
+            <option>1对2</option>
+            <option>其他</option>
+        </select>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">所报课时（小时）</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="period" value="$!{student.periodDisplay}" class="input-xlarge"/>
+      <input type="text" name="period" value="$!{student.periodDisplay}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">课时单价（元/小时）</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="price" value="$!{student.price}" class="input-xlarge"/>
+      <input type="text" name="price" value="$!{student.price}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">赠送课时（不能为空，默认0）</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="gift" value="$!{student.giftDisplay}" class="input-xlarge"/>
+      <input type="text" name="gift" value="$!{student.giftDisplay}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">优惠条件</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="tiaojian" value="$!{student.tiaojian}" class="input-xlarge"/>
+      <input type="text" name="tiaojian" value="$!{student.tiaojian}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">总金额</label>
     <div class="controls">
-      <input disabled="disabled" type="text" name="amount" value="$!{student.amount}" class="input-xlarge"/>
+      <input type="text" name="amount" value="$!{student.amount}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">学员情况</label>
     <div class="controls">
-      <textarea class="input-xlarge" disabled="disabled" name="description" rows="5">$!{student.description}</textarea>
+      <textarea class="input-xlarge" name="description" rows="5">$!{student.description}</textarea>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">签约日期</label>
     <div class="controls">
-      <input disabled="disabled" id="date" name="date" value="$!{student.date}" type="text" class="span3">
+      <input id="date" name="date" value="$!{student.date}" type="text" class="span3">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="col-sm-offset-2 controls">
+      <button type="submit" class="btn btn-default">修改</button>
     </div>
   </div>
 </form>

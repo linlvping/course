@@ -1,0 +1,15 @@
+/* CSS Document */
+.list_lhul ul,li,dl,ol{list-style:none;}
+.list_lh a{color:#666; text-decoration:none;}
+
+.box{ margin:0 auto;}
+.bcon{ border:1px solid #eee; margin:5px;}
+.bcon h1{ border-bottom:1px solid #eee; padding:0 10px;}
+.bcon h1 b{ font:bold 14px/40px '宋体'; border-top:2px solid #3492D1; padding:0 8px; margin-top:-1px; display:inline-block;}
+
+.list_lh{ height:400px; overflow:hidden;}
+.list_lh li{ padding:10px;}
+.list_lh li.lieven{ background:#F0F2F3;}
+.list_lh li span{ margin-left:20px;display:inline-block;}
+.btn_lh:hover{ color:#fff; text-decoration:none;}
+

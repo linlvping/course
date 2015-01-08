@@ -13,7 +13,7 @@ public class Student {
     private String id;
     private String name;
     private String pact;
-    private String grade;
+    private int grade;
     private String banji;
     private String address;
     private String tel;
@@ -56,11 +56,11 @@ public class Student {
         this.pact = pact;
     }
 
-    public String getGrade() {
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
@@ -205,7 +205,8 @@ public class Student {
     }
     
     public String getRemainDisplay() {
-        return CommonUtils.minToHour(this.remain);
+        String hour = CommonUtils.minToHour(this.remain);
+        return this.remain > 1200 ? hour : "<font style='color:red;'>"+hour+"</font>";
     }
     
     public String getCost() {
@@ -220,12 +221,12 @@ public class Student {
         return this.status == 0 ? "正常" : "失效";
     }
     
-    public String getPeriodDisplay() {
-        return CommonUtils.minToHour(this.period);
+    public int getPeriodDisplay() {
+        return this.period / 60;
     }
     
-    public String getGiftDisplay() {
-        return CommonUtils.minToHour(this.gift);
+    public int getGiftDisplay() {
+        return this.gift / 60;
     }
     
     public String getDetail() {
@@ -238,6 +239,52 @@ public class Student {
     
     public String getCallback() {
         return "<a href='show?name="+this.name+"'>回访信息</a>";
+    }
+    
+    public String getGradeDisplay() {
+        String result = "";
+        switch (this.grade) {
+            case 1 : 
+                result = "小学一年级"; 
+                break;
+            case 2 : 
+                result = "小学二年级"; 
+                break;
+            case 3 : 
+                result = "小学三年级"; 
+                break;
+            case 4 : 
+                result = "小学四年级"; 
+                break;
+            case 5 : 
+                result = "小学五年级"; 
+                break;
+            case 6 : 
+                result = "小学六年级"; 
+                break;
+            case 7 : 
+                result = "初一"; 
+                break;
+            case 8 : 
+                result = "初二"; 
+                break;
+            case 9 : 
+                result = "初三"; 
+                break;
+            case 10 : 
+                result = "高一"; 
+                break;
+            case 11 : 
+                result = "高二"; 
+                break;
+            case 12 : 
+                result = "高三"; 
+                break;
+            default : 
+                result = "未知"; 
+                break;
+        }
+        return result;
     }
 
 }

@@ -33,6 +33,21 @@ public class PeriodService {
         studentDao.save(student);
     }
     
+    public void updateStudent(Student student) {
+        int current = CommonUtils.getCurrentTime();
+        student.setUpdated(current);
+        Student old = studentDao.getByName(student.getName());
+        student.setGift(CommonUtils.hourToMin(student.getGift()));
+        student.setPeriod(CommonUtils.hourToMin(student.getPeriod()));
+        int remainChange = student.getPeriod() + student.getGift() - old.getPeriod() - old.getGift();
+        student.setRemain(old.getRemain() + remainChange);
+        studentDao.updateStudent(student);
+    }
+    
+    public void upgrade() {
+        studentDao.upgrade();
+    }
+    
     public List<Student> getStudent() {
         return studentDao.getStudent();
     }
