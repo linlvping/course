@@ -97,18 +97,6 @@
 			<version>2.0</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		
 		<!-- mybatis-spring -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
