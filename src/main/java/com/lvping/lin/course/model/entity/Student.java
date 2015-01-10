@@ -29,6 +29,7 @@ public class Student {
     private String date;
     private int status;
     private int remain;
+    private String operator;
     private int created;
     private int updated;
 
@@ -182,6 +183,14 @@ public class Student {
 
     public void setRemain(int remain) {
         this.remain = remain;
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
     public int getCreated() {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lvping.lin.course.common.Constants;
 import com.lvping.lin.course.common.TableDataUtils;
 import com.lvping.lin.course.model.entity.Student;
+import com.lvping.lin.course.model.service.CourseService;
 import com.lvping.lin.course.model.service.PeriodService;
 
 /**
@@ -28,9 +29,12 @@ public class PeriodAction {
     
     @Resource
     private PeriodService periodService;
+    @Resource
+    private CourseService courseService;
     
     @RequestMapping("/add")
     public String login(HttpServletRequest request) {
+        request.setAttribute("list", courseService.getCourse());
         request.getSession().setAttribute(Constants.SEESION_LINK, "period_add");
         return "period/add";
     }

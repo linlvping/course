@@ -16,12 +16,12 @@ import com.lvping.lin.course.model.entity.Student;
  */
 public interface StudentDao {
     
-    @Insert("insert into Student(id,name,pact,grade,banji,address,tel,phone,course,model,period,price,gift,tiaojian,amount,description,date,status,remain,created,updated)" +
-            " values(#{id},#{name},#{pact},#{grade},#{banji},#{address},#{tel},#{phone},#{course},#{model},#{period},#{price},#{gift},#{tiaojian},#{amount},#{description},#{date},#{status},#{remain},#{created},#{updated})")
+    @Insert("insert into Student(id,name,pact,grade,banji,address,tel,phone,course,model,period,price,gift,tiaojian,amount,description,date,status,remain,operator,created,updated)" +
+            " values(#{id},#{name},#{pact},#{grade},#{banji},#{address},#{tel},#{phone},#{course},#{model},#{period},#{price},#{gift},#{tiaojian},#{amount},#{description},#{date},#{status},#{remain},#{operator},#{created},#{updated})")
     public void save(Student student);
     
     @Update("update Student set id=#{id},pact=#{pact},banji=#{banji},address=#{address},tel=#{tel},phone=#{phone},course=#{course},model=#{model},period=#{period},price=#{price}," +
-    		"gift=#{gift},tiaojian=#{tiaojian},amount=#{amount},description=#{description},date=#{date},remain=#{remain},updated=#{updated} where name=#{name}")
+    		"gift=#{gift},tiaojian=#{tiaojian},amount=#{amount},description=#{description},date=#{date},remain=#{remain},operator=#{operator},updated=#{updated} where name=#{name}")
     public void updateStudent(Student student);
     
     @Update("update Student set remain=remain-${param1},updated=#{param2} where name=#{param3}")

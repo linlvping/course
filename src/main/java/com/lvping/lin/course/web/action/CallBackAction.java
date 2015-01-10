@@ -19,6 +19,7 @@ import com.lvping.lin.course.model.entity.Callback;
 import com.lvping.lin.course.model.entity.Student;
 import com.lvping.lin.course.model.entity.User;
 import com.lvping.lin.course.model.service.CallbackService;
+import com.lvping.lin.course.model.service.CourseService;
 import com.lvping.lin.course.model.service.PeriodService;
 
 /**
@@ -35,6 +36,8 @@ public class CallBackAction {
     private PeriodService periodService;
     @Resource
     private CallbackService callbackService;
+    @Resource
+    private CourseService courseService;
     
     @RequestMapping("/index") 
     public String index(HttpServletRequest request) {
@@ -45,6 +48,7 @@ public class CallBackAction {
     @RequestMapping("/detail")
     public String detail(Model model, HttpServletRequest request) {
         String name = CommonUtils.getName(request);
+        request.setAttribute("list", courseService.getCourse());
         model.addAttribute("student", periodService.getByName(name));
         return "callback/detail";
     }

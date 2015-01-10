@@ -15,7 +15,7 @@
 	<session-config>
 		<session-timeout>1440</session-timeout>
 	</session-config>
-
+  
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

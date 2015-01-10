@@ -66,51 +66,11 @@
   <div class="control-group">
     <label class="col-sm-2 control-label">所报科目</label>
     <div class="controls">
+		#foreach($!{course} in $!{list})
 		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="语文">语文</input>
+			<input type="checkbox" name="course" value="$!{course.name}">$!{course.name}</input>
         </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="数学">数学</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="英语">英语</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="科学">科学</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="物理">物理</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="化学">化学</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="生物">生物</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="政治">政治</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="历史">历史</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="地理">地理</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="奥数">奥数</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="新概念英语">新概念英语</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="剑桥英语">剑桥英语</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="小升初面试课程">小升初面试课程</input>
-        </label>
-		<label class="checkbox inline">
-			<input type="checkbox" name="course" value="其他">其他</input>
-        </label>
+		#end
     </div>
   </div>
   <div class="control-group">
@@ -163,6 +123,12 @@
     <label class="col-sm-2 control-label">签约日期</label>
     <div class="controls">
       <input id="date" name="date" value="$!{date}" type="text" class="span3" placeholder="签约日期" onfocus="WdatePicker()">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">签约人</label>
+    <div class="controls">
+      <input name="operator" value="$!{operator}" type="text" class="input-xlarge" placeholder="签约人">
     </div>
   </div>
   <div class="control-group">
