@@ -15,10 +15,10 @@ import com.lvping.lin.course.model.entity.Course;
  */
 public interface CourseDao {
     
-    @Insert("insert into course(name,created) values(#{name},#{created})")
+    @Insert("insert into Course(name,created) values(#{name},#{created})")
     public void save(Course course);
     
-    @Select("select * from course order by created")
+    @Select("select * from Course order by created")
     public List<Course> get();
 
 }
