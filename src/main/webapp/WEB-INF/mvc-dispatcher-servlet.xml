@@ -93,17 +93,5 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	
-	<bean id="facadeMonitoringAdvisor" class="net.bull.javamelody.MonitoringSpringAdvisor">  
-    <property name="pointcut">  
-        <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">  
-            <property name="patterns">  
-                <array>  
-                    <value>org\.noahx\.test\..*</value>  
-                </array>  
-            </property>  
-        </bean>  
-    </property>  
-</bean>  
-
 	<!-- END Spring MVC -->
 </beans>
