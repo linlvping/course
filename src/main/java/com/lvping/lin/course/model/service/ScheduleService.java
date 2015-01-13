@@ -15,6 +15,7 @@ import com.lvping.lin.course.model.dao.ScheduleDao;
 import com.lvping.lin.course.model.dao.StudentDao;
 import com.lvping.lin.course.model.entity.Schedule;
 import com.lvping.lin.course.model.entity.Teacher;
+import com.lvping.lin.course.model.entity.User;
 
 /**
  *
@@ -42,8 +43,13 @@ public class ScheduleService {
         scheduleDao.save(schedule);
     }
     
-    public Map<String, Map<Integer, Map<String, List<Schedule>>>> getSchedule(String beginDate, String endDate) {
-        List<Schedule> list = scheduleDao.getSchedule(beginDate, endDate);
+    public Map<String, Map<Integer, Map<String, List<Schedule>>>> getSchedule(String beginDate, String endDate, User user) {
+        List<Schedule> list = null;
+        if (user.getPriority() == 100) {
+            list = scheduleDao.getSchedule(beginDate, endDate);
+        } else {
+            list = scheduleDao.getScheduleByTeacher(beginDate, endDate, user.getName());
+        }
         //老师=>时间段=>日期=>学生列表
         Map<String, Map<Integer, Map<String, List<Schedule>>>> map = Maps.newHashMap();
         for (Schedule schedule : list) {

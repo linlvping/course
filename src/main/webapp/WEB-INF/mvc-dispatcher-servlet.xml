@@ -73,6 +73,7 @@
 			<mvc:exclude-mapping path="/callback/show" />
 			<mvc:exclude-mapping path="/callback/save" />
 			<mvc:exclude-mapping path="/callback/data" />
+			<mvc:exclude-mapping path="/schedule/show" />
 			<bean class="com.lvping.lin.course.web.interceptor.PriorityInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

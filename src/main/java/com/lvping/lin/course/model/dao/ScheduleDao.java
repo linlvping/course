@@ -30,6 +30,9 @@ public interface ScheduleDao {
     @Select("select * from Schedule where date>=#{param1} and date<=#{param2}")
     public List<Schedule> getSchedule(String beginDate, String endDate);
     
+    @Select("select * from Schedule where date>=#{param1} and date<=#{param2} and teacher=#{param3}")
+    public List<Schedule> getScheduleByTeacher(String beginDate, String endDate, String teacher);
+    
     @Select("select * from Schedule where status=#{status} order by id")
     public List<Schedule> getScheduleByStatus(int status);
     

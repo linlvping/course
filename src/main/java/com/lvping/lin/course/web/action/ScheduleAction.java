@@ -21,6 +21,7 @@ import com.lvping.lin.course.common.TableDataUtils;
 import com.lvping.lin.course.model.entity.Schedule;
 import com.lvping.lin.course.model.entity.Student;
 import com.lvping.lin.course.model.entity.Teacher;
+import com.lvping.lin.course.model.entity.User;
 import com.lvping.lin.course.model.service.PeriodService;
 import com.lvping.lin.course.model.service.ScheduleService;
 import com.lvping.lin.course.model.service.TeacherService;
@@ -54,8 +55,9 @@ public class ScheduleAction {
         if (CommonUtils.isEmpty(endDate)) {
             endDate = DateUtils.getCurrentWeekday();
         }
+        User user = (User)request.getSession().getAttribute(Constants.SEESION_USER);
         List<DateArray> dateArray = DateUtils.dateArray(beginDate, endDate);
-        Map<String, Map<Integer, Map<String, List<Schedule>>>> map = scheduleService.getSchedule(beginDate, endDate);
+        Map<String, Map<Integer, Map<String, List<Schedule>>>> map = scheduleService.getSchedule(beginDate, endDate, user);
         model.addAttribute("beginDate", beginDate);
         model.addAttribute("endDate", endDate);
         model.addAttribute("dateArray", dateArray);
