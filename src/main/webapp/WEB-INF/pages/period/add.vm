@@ -1,6 +1,6 @@
 <script src="${rc.contextPath}/js/datepicker/WdatePicker.js"></script>
 <script src="${rc.contextPath}/js/validate.js"></script>
-<div style="text-align:center"><h3>合同录入</h3></div>
+<div style="text-align:center"><h3>合同录入（<span style="color:red;">*</span>为必填项）</h3></div>
 <form class="form-horizontal" role="form" action="${rc.contextPath}/period/save" method="post" onsubmit="return check();">
   <div class="control-group">
     <label class="col-sm-2 control-label">合同编号</label>
@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">学员姓名</label>
+    <label class="col-sm-2 control-label">学员姓名<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="name" type="text" name="name" value="$!{name}" class="input-xlarge" placeholder="学员姓名"/>
     </div>
@@ -65,7 +65,7 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">所报科目</label>
+    <label class="col-sm-2 control-label">所报科目<span style="color:red;">*</span></label>
     <div class="controls">
 		#foreach($!{course} in $!{list})
 		<label class="checkbox inline">
@@ -85,19 +85,19 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">所报课时（小时）</label>
+    <label class="col-sm-2 control-label">所报课时（小时）<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="keshi" type="text" name="period" value="$!{period}" class="input-xlarge" placeholder="所报课时（小时）"/>
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">课时单价（元/小时）</label>
+    <label class="col-sm-2 control-label">课时单价（元/小时）<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="kejia" type="text" name="price" value="$!{price}" class="input-xlarge" placeholder="课时单价（元/小时）"/>
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">赠送课时（不能为空，默认0）</label>
+    <label class="col-sm-2 control-label">赠送课时（默认0）<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="gift" type="text" name="gift" value="0" class="input-xlarge" placeholder="赠送课时"/>
     </div>
@@ -109,7 +109,7 @@
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">总金额</label>
+    <label class="col-sm-2 control-label">总金额<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="amount" type="text" name="amount" value="$!{amount}" class="input-xlarge" placeholder="总金额"/>
     </div>

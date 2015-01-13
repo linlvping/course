@@ -22,7 +22,7 @@ $(document).ready(function(){
 	$('#grade').val("$!{student.grade}");
 });
 </script>
-<div style="text-align:center"><h3>学员具体信息——$!{student.name}</h3></div>
+<div style="text-align:center"><h3>学员具体信息（<span style="color:red;">*</span>为必填项）——$!{student.name}</h3></div>
 <form class="form-horizontal" role="form" action="${rc.contextPath}/period/update" method="post" onsubmit="return checked();">
   <div class="control-group">
     <label class="col-sm-2 control-label">合同编号</label>
@@ -37,7 +37,7 @@ $(document).ready(function(){
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">学员姓名</label>
+    <label class="col-sm-2 control-label">学员姓名<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="name" readonly="readonly" type="text" name="name" value="$!{student.name}" class="input-xlarge"/>
     </div>
@@ -87,7 +87,7 @@ $(document).ready(function(){
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">所报科目</label>
+    <label class="col-sm-2 control-label">所报科目<span style="color:red;">*</span></label>
     <div class="controls">
 		#foreach($!{course} in $!{list})
 		<label class="checkbox inline">
@@ -107,19 +107,19 @@ $(document).ready(function(){
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">所报课时（小时）</label>
+    <label class="col-sm-2 control-label">所报课时（小时）<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="keshi" type="text" name="period" value="$!{student.periodDisplay}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">课时单价（元/小时）</label>
+    <label class="col-sm-2 control-label">课时单价（元/小时）<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="kejia" type="text" name="price" value="$!{student.price}" class="input-xlarge"/>
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">赠送课时（不能为空，默认0）</label>
+    <label class="col-sm-2 control-label">赠送课时（默认0）<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="gift" type="text" name="gift" value="$!{student.giftDisplay}" class="input-xlarge"/>
     </div>
@@ -131,7 +131,7 @@ $(document).ready(function(){
     </div>
   </div>
   <div class="control-group">
-    <label class="col-sm-2 control-label">总金额</label>
+    <label class="col-sm-2 control-label">总金额<span style="color:red;">*</span></label>
     <div class="controls">
       <input id="amount" type="text" name="amount" value="$!{student.amount}" class="input-xlarge"/>
     </div>
