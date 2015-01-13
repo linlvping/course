@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lvping.lin.course.common.Constants;
 import com.lvping.lin.course.common.TableDataUtils;
 import com.lvping.lin.course.model.entity.Student;
+import com.lvping.lin.course.model.entity.User;
 import com.lvping.lin.course.model.service.CourseService;
 import com.lvping.lin.course.model.service.PeriodService;
 
@@ -60,10 +61,11 @@ public class PeriodAction {
     
     @RequestMapping("/data") 
     @ResponseBody
-    public Map<String, Object> data() {
+    public Map<String, Object> data(HttpServletRequest request) {
         Map<String, Object> datamap = new HashMap<String, Object>();
         try {
-            List<Student> list = periodService.getStudent();
+            User user = (User)request.getSession().getAttribute(Constants.SEESION_USER);
+            List<Student> list = periodService.getStudent(user);
             datamap = TableDataUtils.getDataTable(list.size(), list);
         } catch (Exception e) {
             e.printStackTrace();
