@@ -1,6 +1,7 @@
 <script src="${rc.contextPath}/js/datepicker/WdatePicker.js"></script>
+<script src="${rc.contextPath}/js/validate.js"></script>
 <div style="text-align:center"><h3>合同录入</h3></div>
-<form class="form-horizontal" role="form" action="${rc.contextPath}/period/save" method="post">
+<form class="form-horizontal" role="form" action="${rc.contextPath}/period/save" method="post" onsubmit="return check();">
   <div class="control-group">
     <label class="col-sm-2 control-label">合同编号</label>
     <div class="controls">
@@ -16,7 +17,7 @@
   <div class="control-group">
     <label class="col-sm-2 control-label">学员姓名</label>
     <div class="controls">
-      <input type="text" name="name" value="$!{name}" class="input-xlarge" placeholder="学员姓名"/>
+      <input id="name" type="text" name="name" value="$!{name}" class="input-xlarge" placeholder="学员姓名"/>
     </div>
   </div>
   <div class="control-group">
@@ -86,19 +87,19 @@
   <div class="control-group">
     <label class="col-sm-2 control-label">所报课时（小时）</label>
     <div class="controls">
-      <input type="text" name="period" value="$!{period}" class="input-xlarge" placeholder="所报课时（小时）"/>
+      <input id="keshi" type="text" name="period" value="$!{period}" class="input-xlarge" placeholder="所报课时（小时）"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">课时单价（元/小时）</label>
     <div class="controls">
-      <input type="text" name="price" value="$!{price}" class="input-xlarge" placeholder="课时单价（元/小时）"/>
+      <input id="kejia" type="text" name="price" value="$!{price}" class="input-xlarge" placeholder="课时单价（元/小时）"/>
     </div>
   </div>
   <div class="control-group">
     <label class="col-sm-2 control-label">赠送课时（不能为空，默认0）</label>
     <div class="controls">
-      <input type="text" name="gift" value="0" class="input-xlarge" placeholder="赠送课时"/>
+      <input id="gift" type="text" name="gift" value="0" class="input-xlarge" placeholder="赠送课时"/>
     </div>
   </div>
   <div class="control-group">
@@ -110,7 +111,7 @@
   <div class="control-group">
     <label class="col-sm-2 control-label">总金额</label>
     <div class="controls">
-      <input type="text" name="amount" value="$!{amount}" class="input-xlarge" placeholder="总金额"/>
+      <input id="amount" type="text" name="amount" value="$!{amount}" class="input-xlarge" placeholder="总金额"/>
     </div>
   </div>
   <div class="control-group">
