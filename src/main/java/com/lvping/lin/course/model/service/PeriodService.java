@@ -1,5 +1,6 @@
 package com.lvping.lin.course.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,8 +8,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.lvping.lin.course.common.CommonUtils;
+import com.lvping.lin.course.model.dao.ScheduleDao;
 import com.lvping.lin.course.model.dao.StudentDao;
 import com.lvping.lin.course.model.entity.Student;
+import com.lvping.lin.course.model.entity.User;
 
 /**
  *
@@ -21,6 +24,8 @@ public class PeriodService {
     
     @Resource
     private StudentDao studentDao;
+    @Resource
+    private ScheduleDao scheduleDao;
     
     public void addStudent(Student student) {
         int current = CommonUtils.getCurrentTime();
@@ -48,8 +53,19 @@ public class PeriodService {
         studentDao.upgrade();
     }
     
-    public List<Student> getStudent() {
-        return studentDao.getStudent();
+    public List<Student> getStudent(User user) {
+        if (user.getPriority() >= 100) {
+            return studentDao.getStudent();
+        } else {
+            List<String> list = scheduleDao.getStudentByTeacher(user.getName());
+            List<Student> result = new ArrayList<Student>();
+            for (String s : list) {
+                Student student = new Student();
+                student.setName(s);
+                result.add(student);
+            }
+            return result;
+        }
     }
     
     public List<Student> getValidStudent() {

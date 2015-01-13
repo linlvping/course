@@ -41,5 +41,8 @@ public interface ScheduleDao {
     
     @Select("select * from Schedule where student=#{student} order by id desc")
     public List<Schedule> getScheduleByStudent(String student);
+    
+    @Select("select distinct student from Schedule where teacher=#{teacher}")
+    public List<String> getStudentByTeacher(String teacher);
 
 }

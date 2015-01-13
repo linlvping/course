@@ -1,7 +1,5 @@
 package com.lvping.lin.course.web.action;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lvping.lin.course.common.Constants;
-import com.lvping.lin.course.model.entity.Student;
 import com.lvping.lin.course.model.entity.User;
 import com.lvping.lin.course.model.service.PeriodService;
 import com.lvping.lin.course.model.service.UserService;
@@ -33,7 +30,8 @@ public class LoginAction {
     @RequestMapping("/")
     public String index(Model model, HttpServletRequest request) {
         request.getSession().setAttribute(Constants.SEESION_LINK, "home");
-        model.addAttribute("list", periodService.getStudent());
+        User user = (User)request.getSession().getAttribute(Constants.SEESION_USER);
+        model.addAttribute("list", periodService.getStudent(user));
         return "home";
     }
     

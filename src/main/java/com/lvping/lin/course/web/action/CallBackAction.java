@@ -65,7 +65,8 @@ public class CallBackAction {
     public Map<String, Object> list(HttpServletRequest request) {
         Map<String, Object> datamap = new HashMap<String, Object>();
         try {
-            List<Student> list = periodService.getStudent();
+            User user = (User)request.getSession().getAttribute(Constants.SEESION_USER);
+            List<Student> list = periodService.getStudent(user);
             datamap = TableDataUtils.getDataTable(list.size(), list);
         } catch (Exception e) {
             e.printStackTrace();
