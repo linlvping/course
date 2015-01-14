@@ -20,11 +20,11 @@ public class Student {
     private String phone;
     private String course;
     private String model;
-    private int period;
-    private int price;
-    private int gift;
+    private float period;
+    private float price;
+    private float gift;
     private String tiaojian;
-    private int amount;
+    private float amount;
     private String description;
     private String date;
     private int status;
@@ -113,27 +113,27 @@ public class Student {
         this.model = model;
     }
 
-    public int getPeriod() {
+    public float getPeriod() {
         return period;
     }
 
-    public void setPeriod(int period) {
+    public void setPeriod(float period) {
         this.period = period;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
-    public int getGift() {
+    public float getGift() {
         return gift;
     }
 
-    public void setGift(int gift) {
+    public void setGift(float gift) {
         this.gift = gift;
     }
 
@@ -145,11 +145,11 @@ public class Student {
         this.tiaojian = tiaojian;
     }
 
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(float amount) {
         this.amount = amount;
     }
 
@@ -230,11 +230,11 @@ public class Student {
         return this.status == 0 ? "正常" : "失效";
     }
     
-    public int getPeriodDisplay() {
+    public float getPeriodDisplay() {
         return this.period / 60;
     }
     
-    public int getGiftDisplay() {
+    public float getGiftDisplay() {
         return this.gift / 60;
     }
     

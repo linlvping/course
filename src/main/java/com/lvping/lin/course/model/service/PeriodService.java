@@ -34,7 +34,7 @@ public class PeriodService {
         student.setUpdated(current);
         student.setGift(CommonUtils.hourToMin(student.getGift()));
         student.setPeriod(CommonUtils.hourToMin(student.getPeriod()));
-        student.setRemain(student.getGift() + student.getPeriod());
+        student.setRemain((int)(student.getGift() + student.getPeriod()));
         studentDao.save(student);
     }
     
@@ -44,7 +44,7 @@ public class PeriodService {
         Student old = studentDao.getByName(student.getName());
         student.setGift(CommonUtils.hourToMin(student.getGift()));
         student.setPeriod(CommonUtils.hourToMin(student.getPeriod()));
-        int remainChange = student.getPeriod() + student.getGift() - old.getPeriod() - old.getGift();
+        int remainChange = (int)(student.getPeriod() + student.getGift() - old.getPeriod() - old.getGift());
         student.setRemain(old.getRemain() + remainChange);
         studentDao.updateStudent(student);
     }

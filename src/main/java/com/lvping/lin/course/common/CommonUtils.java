@@ -183,12 +183,12 @@ public class CommonUtils {
         return sb.toString();
 	}
 	
-	public static int hourToMin(int hour) {
-	    return hour * 60;
+	public static int hourToMin(float hour) {
+	    return (int)(hour * 60);
 	}
 	
-	public static String minToHour(int min) {
-	    return String.valueOf((float)min/60);
+	public static String minToHour(float min) {
+	    return String.valueOf(min/60);
 	}
 	
 	public static String getName(HttpServletRequest request) {
