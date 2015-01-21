@@ -107,6 +107,10 @@ public class ScheduleService {
         scheduleDao.updateCourse(s);
     }
     
+    public void delete(int id) {
+        scheduleDao.delete(id);
+    }
+    
     @Transactional
     public void confirm(int id) {
         int current = CommonUtils.getCurrentTime();

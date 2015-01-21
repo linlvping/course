@@ -123,8 +123,14 @@ public class ScheduleAction {
     }
     
     @RequestMapping("/off/{id}")
-    public String offf(@PathVariable int id) {
+    public String off(@PathVariable int id) {
         scheduleService.offCourse(id);
+        return "redirect:../list";
+    }
+    
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable int id) {
+        scheduleService.delete(id);
         return "redirect:../list";
     }
     

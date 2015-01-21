@@ -111,7 +111,8 @@ public class Schedule {
     public String getAction() {
         return "<a href='confirm/"+this.id+"'>课时确认</a>|"+
                "<a href='lack/"+this.id+"'>课时不足</a>|"+
-               "<a href='off/"+this.id+"'>学员请假</a>";
+               "<a href='off/"+this.id+"'>学员请假</a>|"+
+               "<a href='delete/"+this.id+"'>删除</a>";
     }
 
     public String getTime() {
