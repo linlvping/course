@@ -1,6 +1,7 @@
 package com.lvping.lin.course.common;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -199,5 +200,14 @@ public class CommonUtils {
             e.printStackTrace();
         }
         return name;
+	}
+	
+	public static String urlEncode(String str) {
+	    try {
+            return URLEncoder.encode(str, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+	    return "";
 	}
 }

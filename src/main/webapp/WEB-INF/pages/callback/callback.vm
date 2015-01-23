@@ -1,13 +1,14 @@
 <script type="text/javascript" language="javascript" src="${rc.contextPath}/js/dataTableUtil.js"></script>
 <script type="text/javascript"> 
 $(document).ready(function(){
+	var name = encodeURI("$!{student}");
 	$('#profileTable').dataTable({   
 		"language" : lang,
 		"destroy": true,
 		"processing": true,
 		"ordering":false,
 		"serverSide" : false,    
-		"ajax": "${rc.contextPath}/callback/data?name=$!{student}&rand="+Math.random(),
+		"ajax": "${rc.contextPath}/callback/data?name="+name+"&rand="+Math.random(),
 		"columns": [
             { "data": "time" },
             { "data": "content" },

@@ -239,15 +239,19 @@ public class Student {
     }
     
     public String getDetail() {
-        return "<a href='detail?name="+this.name+"'>详细信息</a>";
+        return "<a href='detail?name="+getNameEncode()+"'>详细信息</a>";
     }
     
     public String getPaike() {
-        return "<a href='paike?name="+this.name+"'>排课信息</a>";
+        return "<a href='paike?name="+getNameEncode()+"'>排课信息</a>";
     }
     
     public String getCallback() {
-        return "<a href='show?name="+this.name+"'>回访信息</a>";
+        return "<a href='show?name="+getNameEncode()+"'>回访信息</a>";
+    }
+    
+    public String getNameEncode() {
+        return CommonUtils.urlEncode(this.name);
     }
     
     public String getGradeDisplay() {

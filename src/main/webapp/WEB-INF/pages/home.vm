@@ -24,7 +24,7 @@ $(function(){
         			<ul>
 					#foreach($!{student} in $!{list})
 						<li>
-							<a style="width:150px;" href="${rc.contextPath}/callback/paike?name=$!{student.name}"><span style="width:150px;">学员：$!{student.name}</span></a>
+							<a style="width:150px;" href="${rc.contextPath}/callback/paike?name=$!{student.nameEncode}"><span style="width:150px;">学员：$!{student.name}</span></a>
 							<span style="width:150px;">年级：$!{student.gradeDisplay}</span>
 							<span style="width:250px">所报课程：$!{student.course}</span>
 							<span style="width:150px;">剩余课时：$!{student.remainDisplay}</span>
