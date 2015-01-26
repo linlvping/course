@@ -59,7 +59,7 @@ public class ScheduleService {
                 tMap = map.get(teacher); 
             } else {
                 tMap = Maps.newTreeMap();
-                for (int i=1; i<=5; i++) {
+                for (int i=1; i<=6; i++) {
                     Map<String, List<Schedule>> lMap = Maps.newHashMap();
                     tMap.put(i, lMap);
                 }
