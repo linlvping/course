@@ -40,15 +40,16 @@ public class ScheduleService {
         schedule.setStatus(0);
         schedule.setFact(0);
         schedule.setShichang(120);
+        schedule.setLocation(CommonUtils.getLocation());
         scheduleDao.save(schedule);
     }
     
     public Map<String, Map<Integer, Map<String, List<Schedule>>>> getSchedule(String beginDate, String endDate, User user) {
         List<Schedule> list = null;
         if (user.getPriority() == 100) {
-            list = scheduleDao.getSchedule(beginDate, endDate);
+            list = scheduleDao.getSchedule(beginDate, endDate, CommonUtils.getLocation());
         } else {
-            list = scheduleDao.getScheduleByTeacher(beginDate, endDate, user.getName());
+            list = scheduleDao.getScheduleByTeacher(beginDate, endDate, user.getName(), CommonUtils.getLocation());
         }
         //老师=>时间段=>日期=>学生列表
         Map<String, Map<Integer, Map<String, List<Schedule>>>> map = Maps.newHashMap();
@@ -86,7 +87,7 @@ public class ScheduleService {
     }
     
     public List<Schedule> getNeedActionSchedule() {
-        return scheduleDao.getScheduleByStatus(0);
+        return scheduleDao.getScheduleByStatus(0, CommonUtils.getLocation());
     }
     
     public List<Schedule> getScheduleByStudent(String student) {

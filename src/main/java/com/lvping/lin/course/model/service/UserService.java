@@ -27,6 +27,7 @@ public class UserService {
         user.setCreated(current);
         user.setUpdated(current);
         user.setPriority(0);
+        user.setLocation(CommonUtils.getLocation());
         userDao.save(user);
     }
     
@@ -48,7 +49,7 @@ public class UserService {
     }
     
     public List<User> getAllUsers() {
-        return userDao.getAll();
+        return userDao.getAll(CommonUtils.getLocation());
     }
 
 }

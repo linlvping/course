@@ -1,22 +1,21 @@
 package com.lvping.lin.course.model.entity;
 
+import java.io.Serializable;
+
+import com.lvping.lin.course.common.CommonUtils;
 
 /**
- * 
- * @author beifeng
- * @Date 2015-1-5
- * 
+ * @author NAIBA  
+ * @date 2015年7月11日
  */
-public class Teacher {
+public class Location implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private int id;
     private String name;
-    private String phone;
-    private String course;
     private int status;
     private int created;
     private int updated;
-    private int location;
 
     public int getId() {
         return id;
@@ -32,22 +31,6 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
     }
 
     public int getStatus() {
@@ -74,20 +57,21 @@ public class Teacher {
         this.updated = updated;
     }
     
-    public int getLocation() {
-        return location;
+    public String getCreatedDisplay() {
+        return CommonUtils.formatTime(created);
     }
-
-    public void setLocation(int location) {
-        this.location = location;
+    
+    public String getUpdatedDisplay() {
+        return CommonUtils.formatTime(updated);
     }
-
+    
     public String getStatusDisplay() {
         return this.status == 0 ? "正常" : "已失效";
     }
     
     public String getAction() {
-        return this.status == 0 ? "<a href='invalid/"+this.id+"'>弃用该老师</a>" : "<a href='valid/"+this.id+"'>重新启用</a>";
+        String action = this.status == 0 ? "<a href='invalid/"+this.id+"'>弃用该校区</a>" : "<a href='valid/"+this.id+"'>重新启用该校区</a>";
+        return "<a href='javascript:modifyName("+this.id+")'>修改校区名称</a>|" + action;
     }
 
 }

@@ -24,11 +24,12 @@ public class CourseService {
     
     public void saveCourse(Course course) {
         course.setCreated(CommonUtils.getCurrentTime());
+        course.setLocation(CommonUtils.getLocation());
         courseDao.save(course);
     }
     
     public List<Course> getCourse() {
-        return courseDao.get();
+        return courseDao.get(CommonUtils.getLocation());
     }
 
 }

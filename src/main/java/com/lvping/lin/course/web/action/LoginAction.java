@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.lvping.lin.course.common.CommonUtils;
 import com.lvping.lin.course.common.Constants;
 import com.lvping.lin.course.model.entity.User;
 import com.lvping.lin.course.model.service.PeriodService;
@@ -60,7 +61,8 @@ public class LoginAction {
 			}
 			if (user.getPassword().equals(password)) {
 			    request.getSession().setAttribute(Constants.SEESION_USER, user);
-				return "redirect:/";
+				CommonUtils.setLoginUser(user);
+			    return "redirect:/";
 			} else {
 			    model.addAttribute("errorMessage", "密码错误！");
 				return "login";

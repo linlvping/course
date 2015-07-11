@@ -1,0 +1,26 @@
+<div style="text-align:center"><h3>新增校区</h3></div>
+<form class="form-horizontal" role="form" action="${rc.contextPath}/location/save" method="post">
+  <div class="control-group">
+    <label class="col-sm-2 control-label">校区名称</label>
+    <div class="controls">
+      <input type="text" name="name" class="input-xlarge" placeholder="校区名称"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">管理员账号</label>
+    <div class="controls">
+      <input type="text" name="adminName" class="input-xlarge" placeholder="管理员账号"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="col-sm-2 control-label">管理员初始密码</label>
+    <div class="controls">
+      <input type="text" name="adminPassword" class="input-xlarge" placeholder="管理员初始密码"/>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="col-sm-offset-2 controls">
+      <button type="submit" class="btn btn-default">新增</button>
+    </div>
+  </div>
+</form>

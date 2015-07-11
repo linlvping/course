@@ -35,6 +35,7 @@ public class PeriodService {
         student.setGift(CommonUtils.hourToMin(student.getGift()));
         student.setPeriod(CommonUtils.hourToMin(student.getPeriod()));
         student.setRemain((int)(student.getGift() + student.getPeriod()));
+        student.setLocation(CommonUtils.getLocation());
         studentDao.save(student);
     }
     
@@ -55,9 +56,9 @@ public class PeriodService {
     
     public List<Student> getStudent(User user) {
         if (user.getPriority() >= 100) {
-            return studentDao.getStudent();
+            return studentDao.getStudent(CommonUtils.getLocation());
         } else {
-            List<String> list = scheduleDao.getStudentByTeacher(user.getName());
+            List<String> list = scheduleDao.getStudentByTeacher(user.getName(), CommonUtils.getLocation());
             List<Student> result = new ArrayList<Student>();
             for (String s : list) {
                 Student student = new Student();
@@ -69,7 +70,7 @@ public class PeriodService {
     }
     
     public List<Student> getValidStudent() {
-        return studentDao.getValidStudent();
+        return studentDao.getValidStudent(CommonUtils.getLocation());
     }
     
     public Student getByName(String name) {

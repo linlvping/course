@@ -27,19 +27,20 @@ public class TeacherService {
         teacher.setStatus(0);
         teacher.setCreated(current);
         teacher.setUpdated(current);
+        teacher.setLocation(CommonUtils.getLocation());
         teacherDao.save(teacher);
     }
     
     public List<Teacher> getTeacher() {
-        return teacherDao.getTeacher();
+        return teacherDao.getTeacher(CommonUtils.getLocation());
     }
     
     public List<Teacher> getValidTeacher() {
-        return teacherDao.getValidTeacher();
+        return teacherDao.getValidTeacher(CommonUtils.getLocation());
     }
     
     public Teacher getTeacherByName(String name) {
-        return teacherDao.getTeacherByName(name);
+        return teacherDao.getTeacherByName(name, CommonUtils.getLocation());
     }
     
     public void updateTeacher(int id, int status) {

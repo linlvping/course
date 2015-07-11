@@ -25,6 +25,7 @@ public class CallbackService {
     public void save(Callback callback) {
         int current = CommonUtils.getCurrentTime();
         callback.setCreated(current);
+        callback.setLocation(CommonUtils.getLocation());
         callbackDao.save(callback);
     }
     

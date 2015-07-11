@@ -15,6 +15,7 @@ public class User {
     private int priority;
     private int created;
     private int updated;
+    private int location;
 
     public int getId() {
         return id;
@@ -72,6 +73,14 @@ public class User {
         this.updated = updated;
     }
     
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
     public String getStatusDisplay() {
         return this.status == 0 ? "正常" : "已失效";
     }

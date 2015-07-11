@@ -36,6 +36,9 @@
             <ul class="nav nav-list">
 			  #if($!{sessionUser.priority} == 100)
 			  <li #if($!{sessionLink} == 'home')class="active" #end><a href="${rc.contextPath}/">主页</a></li>
+				#if($!{sessionUser.name} == 'admin')
+					<li #if($!{sessionLink} == 'location')class="active" #end><a href="${rc.contextPath}/location/list">管理校区</a></li>
+				#end
 			  <li #if($!{sessionLink} == 'course_add')class="active" #end><a href="${rc.contextPath}/course/add">添加课程</a></li>
               <li class="nav-header">学员管理</li>
               <li #if($!{sessionLink} == 'period_add')class="active" #end><a href="${rc.contextPath}/period/add">合同录入</a></li>

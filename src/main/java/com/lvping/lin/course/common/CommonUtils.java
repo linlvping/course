@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.util.StringUtils;
 
+import com.lvping.lin.course.model.entity.User;
+
 /**
  * 
  * @author beifeng
@@ -23,7 +25,9 @@ import org.springframework.util.StringUtils;
  * 
  */
 public class CommonUtils {
-
+    
+    private static User loginUser = null;
+    
 	public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	public static SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
@@ -210,4 +214,12 @@ public class CommonUtils {
         }
 	    return "";
 	}
+
+    public static int getLocation() {
+        return loginUser.getLocation();
+    }
+
+    public static void setLoginUser(User loginUser) {
+        CommonUtils.loginUser = loginUser;
+    }
 }

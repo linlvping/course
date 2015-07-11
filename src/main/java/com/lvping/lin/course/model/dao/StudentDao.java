@@ -16,8 +16,8 @@ import com.lvping.lin.course.model.entity.Student;
  */
 public interface StudentDao {
     
-    @Insert("insert into Student(id,name,pact,grade,banji,address,tel,phone,course,model,period,price,gift,tiaojian,amount,description,date,status,remain,operator,created,updated)" +
-            " values(#{id},#{name},#{pact},#{grade},#{banji},#{address},#{tel},#{phone},#{course},#{model},#{period},#{price},#{gift},#{tiaojian},#{amount},#{description},#{date},#{status},#{remain},#{operator},#{created},#{updated})")
+    @Insert("insert into Student(id,name,pact,grade,banji,address,tel,phone,course,model,period,price,gift,tiaojian,amount,description,date,status,remain,operator,created,updated,location)" +
+            " values(#{id},#{name},#{pact},#{grade},#{banji},#{address},#{tel},#{phone},#{course},#{model},#{period},#{price},#{gift},#{tiaojian},#{amount},#{description},#{date},#{status},#{remain},#{operator},#{created},#{updated},#{location})")
     public void save(Student student);
     
     @Update("update Student set id=#{id},pact=#{pact},banji=#{banji},address=#{address},tel=#{tel},phone=#{phone},course=#{course},model=#{model},period=#{period},price=#{price}," +
@@ -30,11 +30,11 @@ public interface StudentDao {
     @Update("update Student set grade=grade+1")
     public void upgrade();
     
-    @Select("select * from Student order by remain,status")
-    public List<Student> getStudent();
+    @Select("select * from Student where location=#{location} order by remain,status")
+    public List<Student> getStudent(int location);
     
-    @Select("select * from Student where status=0 and remain>0 order by id")
-    public List<Student> getValidStudent();
+    @Select("select * from Student where status=0 and remain>0 and location=#{location} order by id")
+    public List<Student> getValidStudent(int location);
     
     @Select("select * from Student where name=#{name}")
     public Student getByName(String name);

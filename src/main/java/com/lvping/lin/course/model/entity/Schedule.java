@@ -19,6 +19,7 @@ public class Schedule {
     private int status;
     private int created;
     private int updated;
+    private int location;
 
     public int getId() {
         return id;
@@ -108,6 +109,14 @@ public class Schedule {
         this.updated = updated;
     }
     
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
     public String getAction() {
         return "<a href='confirm/"+this.id+"'>课时确认</a>|"+
                "<a href='lack/"+this.id+"'>课时不足</a>|"+

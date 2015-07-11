@@ -20,7 +20,7 @@
     		<tr>
 			#foreach($!{lmap} in $!{entry.value.entrySet()})
 				#if($!{lmap.key} == 1) 
-					<td rowspan="5" style="vertical-align:middle;width:100px;">$!{entry.key}</td>
+					<td rowspan="6" style="vertical-align:middle;width:100px;">$!{entry.key}</td>
 					<td>08:00-10:00</td> 
 				#end
 				#if($!{lmap.key} == 2) <tr><td>10:00-12:00</td> #end

@@ -15,7 +15,7 @@ import com.lvping.lin.course.model.entity.Callback;
  */
 public interface CallbackDao {
     
-    @Insert("insert into Callback(content,student,operator,created) values (#{content},#{student},#{operator},#{created})")
+    @Insert("insert into Callback(content,student,operator,created,location) values (#{content},#{student},#{operator},#{created},#{location})")
     public void save(Callback callback);
     
     @Select("select * from Callback where student=#{student} order by id desc")

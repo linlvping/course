@@ -32,6 +32,7 @@ public class Student {
     private String operator;
     private int created;
     private int updated;
+    private int location;
 
     public String getId() {
         return id;
@@ -209,6 +210,14 @@ public class Student {
         this.updated = updated;
     }
     
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
     public String getAll() {
         return CommonUtils.minToHour(this.period + this.gift);
     }

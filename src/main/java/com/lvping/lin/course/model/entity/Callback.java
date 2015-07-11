@@ -15,6 +15,7 @@ public class Callback {
     private String student;
     private String operator;
     private int created;
+    private int location;
 
     public int getId() {
         return id;
@@ -56,6 +57,14 @@ public class Callback {
         this.created = created;
     }
     
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
     public String getTime() {
         return CommonUtils.formatTime(this.created);
     }

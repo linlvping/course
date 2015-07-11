@@ -9,6 +9,7 @@ public class Course {
     
     private String name;
     private int created;
+    private int location;
 
     public String getName() {
         return name;
@@ -24,6 +25,14 @@ public class Course {
 
     public void setCreated(int created) {
         this.created = created;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
     }
     
 }
