@@ -50,6 +50,7 @@ public class LocationService {
     public void updateStatus(Location location) {
         location.setUpdated(CommonUtils.getCurrentTime());
         locationDao.updateStatus(location);
+        userDao.updateStatusByLocation(location.getStatus(), location.getId());
     }
     
     public void updateName(Location location) {

@@ -31,5 +31,8 @@ public interface UserDao {
     
     @Select("select * from User where location=#{location} order by status asc, id desc")
     public List<User> getAll(int location);
+    
+    @Update("update User set status=#{param1} where location=#{param2}")
+    public void updateStatusByLocation(int status, int location);
 
 }
