@@ -18,7 +18,7 @@ public interface CourseDao {
     @Insert("insert into Course(name,created,location) values(#{name},#{created},#{location})")
     public void save(Course course);
     
-    @Select("select * from Course where location=#{location} order by created")
-    public List<Course> get(int location);
+    @Select("select * from Course order by created")
+    public List<Course> get();
 
 }

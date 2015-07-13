@@ -29,7 +29,7 @@ public class CourseService {
     }
     
     public List<Course> getCourse() {
-        return courseDao.get(CommonUtils.getLocation());
+        return courseDao.get();
     }
 
 }
