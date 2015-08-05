@@ -46,7 +46,7 @@ public interface ScheduleDao {
     @Select("select distinct student from Schedule where teacher=#{param1} and location=#{param2}")
     public List<String> getStudentByTeacher(String teacher, int location);
     
-    @Select("select student,coalesce(sum(fact),0) as keshi,coalesce(sum(money),0) as money from Schedule where date>=#{param1} and date<=#{param2} group by student")
-    public List<Report> getReport(String beginDate, String endDate);
+    @Select("select student,coalesce(sum(fact),0) as keshi,coalesce(sum(money),0) as money from Schedule where date>=#{param1} and date<=#{param2} and location=#{param3} group by student")
+    public List<Report> getReport(String beginDate, String endDate, int location);
 
 }

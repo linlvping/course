@@ -117,7 +117,7 @@ public class ScheduleService {
     }
     
     public void setModel(Model model, String beginDate, String endDate) {
-        List<Report> list = scheduleDao.getReport(beginDate, endDate);
+        List<Report> list = scheduleDao.getReport(beginDate, endDate, CommonUtils.getLocation());
         int keshi = 0;
         int money = 0;
         for (Report report : list) {
