@@ -137,7 +137,7 @@ public class ScheduleAction {
     
     @RequestMapping("/report")
     public String report(HttpServletRequest request, Model model) {
-        request.getSession().setAttribute(Constants.SEESION_LINK, "period_list");
+        request.getSession().setAttribute(Constants.SEESION_LINK, "schedule_report");
         String beginDate = request.getParameter("beginDate");
         String endDate = request.getParameter("endDate");
         if (StringUtils.isEmpty(beginDate)) {
