@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -132,6 +133,23 @@ public class ScheduleAction {
     public String delete(@PathVariable int id) {
         scheduleService.delete(id);
         return "redirect:../list";
+    }
+    
+    @RequestMapping("/report")
+    public String report(HttpServletRequest request, Model model) {
+        request.getSession().setAttribute(Constants.SEESION_LINK, "period_list");
+        String beginDate = request.getParameter("beginDate");
+        String endDate = request.getParameter("endDate");
+        if (StringUtils.isEmpty(beginDate)) {
+            beginDate = DateUtils.getMondayOfWeek();
+        }
+        if (StringUtils.isEmpty(endDate)) {
+            endDate = DateUtils.getCurrentWeekday();
+        }
+        model.addAttribute("beginDate", beginDate);
+        model.addAttribute("endDate", endDate);
+        scheduleService.setModel(model, beginDate, endDate);
+        return "schedule/report";
     }
     
     @RequestMapping("/student") 

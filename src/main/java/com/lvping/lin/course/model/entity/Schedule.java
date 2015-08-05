@@ -20,6 +20,7 @@ public class Schedule {
     private int created;
     private int updated;
     private int location;
+    private float money;
 
     public int getId() {
         return id;
@@ -115,6 +116,14 @@ public class Schedule {
 
     public void setLocation(int location) {
         this.location = location;
+    }
+
+    public float getMoney() {
+        return money;
+    }
+
+    public void setMoney(float money) {
+        this.money = money;
     }
 
     public String getAction() {

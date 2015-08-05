@@ -57,7 +57,6 @@ public class PeriodAction {
         request.getSession().setAttribute(Constants.SEESION_LINK, "period_list");
         return "period/list";
     }
-
     
     @RequestMapping("/data") 
     @ResponseBody

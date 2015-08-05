@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.lvping.lin.course.model.entity.Schedule;
+import com.lvping.lin.course.web.bean.Report;
 
 /**
  *
@@ -17,14 +18,14 @@ import com.lvping.lin.course.model.entity.Schedule;
  */
 public interface ScheduleDao {
     
-    @Insert("insert into Schedule(teacher,date,student,course,scope,shichang,fact,status,created,updated,location)" +
-            " values(#{teacher},#{date},#{student},#{course},#{scope},#{shichang},#{fact},#{status},#{created},#{updated},#{location})")
+    @Insert("insert into Schedule(teacher,date,student,course,scope,shichang,fact,status,created,updated,location,money)" +
+            " values(#{teacher},#{date},#{student},#{course},#{scope},#{shichang},#{fact},#{status},#{created},#{updated},#{location},#{money})")
     public void save(Schedule schedule);
     
     @Delete("delete from Schedule where id=#{id}")
     public void delete(int id);
     
-    @Update("update Schedule set fact=#{fact},status=#{status},updated=#{updated} where id=#{id}")
+    @Update("update Schedule set fact=#{fact},status=#{status},updated=#{updated},money=#{money} where id=#{id}")
     public void updateCourse(Schedule schedule);
     
     @Select("select * from Schedule where date>=#{param1} and date<=#{param2} and location=#{param3}")
@@ -44,5 +45,8 @@ public interface ScheduleDao {
     
     @Select("select distinct student from Schedule where teacher=#{param1} and location=#{param2}")
     public List<String> getStudentByTeacher(String teacher, int location);
+    
+    @Select("select student,coalesce(sum(fact),0) as keshi,coalesce(sum(money),0) as money from Schedule where date>=#{param1} and date<=#{param2} group by student")
+    public List<Report> getReport(String beginDate, String endDate);
 
 }

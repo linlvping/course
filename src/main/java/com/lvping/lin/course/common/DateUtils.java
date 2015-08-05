@@ -112,5 +112,18 @@ public class DateUtils {
         }
         return list;
     }
+    
+    public static int timestamp(String date) {
+        try {
+            return (int) (new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime() / 1000);
+        } catch (ParseException e) {
+            return 0;
+        }
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(timestamp("2015-08-09"));
+        System.out.println(timestamp("2015-08-09") + 86400);
+    }
 
 }

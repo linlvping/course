@@ -49,6 +49,7 @@
               #if($!{sessionUser.priority} == 100)
 			  <li #if($!{sessionLink} == 'schedule_add')class="active" #end><a href="${rc.contextPath}/schedule/add">添加课表</a></li>
               <li #if($!{sessionLink} == 'schedule_list')class="active" #end><a href="${rc.contextPath}/schedule/list">课时确认</a></li>
+              <li #if($!{sessionLink} == 'schedule_report')class="active" #end><a href="${rc.contextPath}/schedule/report">课时消耗</a></li>
 			  #end
 			  <li class="nav-header">学员回访</li>
               <li #if($!{sessionLink} == 'callback_index')class="active" #end><a href="${rc.contextPath}/callback/index">学员列表</a></li>

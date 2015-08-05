@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -14,8 +15,10 @@ import com.lvping.lin.course.common.CommonUtils;
 import com.lvping.lin.course.model.dao.ScheduleDao;
 import com.lvping.lin.course.model.dao.StudentDao;
 import com.lvping.lin.course.model.entity.Schedule;
+import com.lvping.lin.course.model.entity.Student;
 import com.lvping.lin.course.model.entity.Teacher;
 import com.lvping.lin.course.model.entity.User;
+import com.lvping.lin.course.web.bean.Report;
 
 /**
  *
@@ -41,6 +44,7 @@ public class ScheduleService {
         schedule.setFact(0);
         schedule.setShichang(120);
         schedule.setLocation(CommonUtils.getLocation());
+        schedule.setMoney(0);
         scheduleDao.save(schedule);
     }
     
@@ -112,6 +116,19 @@ public class ScheduleService {
         scheduleDao.delete(id);
     }
     
+    public void setModel(Model model, String beginDate, String endDate) {
+        List<Report> list = scheduleDao.getReport(beginDate, endDate);
+        int keshi = 0;
+        int money = 0;
+        for (Report report : list) {
+            keshi += report.getKeshi();
+            money += report.getMoney();
+        }
+        model.addAttribute("keshi", (float)keshi / 60);
+        model.addAttribute("money", money);
+        model.addAttribute("list", list);
+    }
+    
     @Transactional
     public void confirm(int id) {
         int current = CommonUtils.getCurrentTime();
@@ -119,8 +136,7 @@ public class ScheduleService {
         s.setFact(s.getShichang());
         s.setStatus(1);
         s.setUpdated(current);
-        scheduleDao.updateCourse(s);
-        studentDao.update(s.getShichang(), current, s.getStudent());
+        doConfirm(s);
     }
     
     @Transactional
@@ -130,8 +146,20 @@ public class ScheduleService {
         s.setFact(fact);
         s.setStatus(2);
         s.setUpdated(current);
+        doConfirm(s);
+    }
+    
+    private void doConfirm(Schedule s) {
+        // 计算要扣费的钱，赠送课时不计费
+        Student student = studentDao.getByName(s.getStudent());
+        int moneyHour = s.getFact();
+        if (student.getRemain() - s.getFact() < student.getGift()) {
+            moneyHour = (int)student.getRemain() - (int)student.getGift();
+            moneyHour = moneyHour < 0 ? 0 : moneyHour;
+        }
+        s.setMoney(moneyHour * student.getPrice() / 60);
         scheduleDao.updateCourse(s);
-        studentDao.update(fact, current, s.getStudent());
+        studentDao.update(s.getFact(), s.getUpdated(), s.getStudent());
     }
 
 }
