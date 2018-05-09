@@ -15,7 +15,6 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/dyss?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=utf8" /> 
-		<!-- <property name="url" value="jdbc:mysql://121.40.50.87:3306/dyss_test?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=utf8" /> -->
 		<property name="username" value="zeus" />
 		<property name="password" value="zeus" />  
 		<property name="initialSize" value="1" />
